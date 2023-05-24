@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 1566px;
+}
+
+.styled-box-green {
+    background: rgba(132, 201, 136, 0.3) !important;
+}
+
+.styled-box-red {
+    background: rgba(255, 36, 36, 0.3) !important;
+}
+
+.styled-box-orange {
+    background: rgba(255, 193, 6, 0.3) !important;
+}
+
+.styled-box-blue {
+    background: rgba(5, 137, 253, 0.3)!important;
+}
