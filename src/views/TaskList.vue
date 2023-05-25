@@ -18,13 +18,11 @@
           </template>
         </Card>
       </div>
-
       <div class="col-3 hidden lg:block">
         <TaskTypeChange v-on:changeType="changeType"/>
       </div>
     </div>
   </div>
-  <ScrollTop class="bg-primary"/>
   <div ref="observer"></div>
 </template>
 

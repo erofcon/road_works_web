@@ -7,8 +7,8 @@
       <div v-for="answer in taskAnswers" class="py-5 border-top-1 surface-border">
         <div class="flex align-items-center justify-content-between">
           <div class="flex align-items-center">
-            <img src="https://www.primefaces.org/primeblocks-vue/images/blocks/avatars/circle/avatar-m-1.png"
-                 class="w-3rem h-3rem flex-shrink-0 mr-3" alt="logo">
+            <img src="https://avatars.githubusercontent.com/u/104511593?v=4"
+                 class="w-3rem h-3rem flex-shrink-0 mr-3 border-circle" alt="logo">
             <div class="flex flex-column">
               <span class="text-900 font-medium mb-1 cursor-pointer">{{ answer.creator.username }}</span>
               <span

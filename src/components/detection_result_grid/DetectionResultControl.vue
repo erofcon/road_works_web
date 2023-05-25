@@ -1,9 +1,9 @@
 <template>
   <Toast/>
   <div class="fixed bottom-0 min-w-full surface-0">
-    <div class="flex p-3 shadow-3 border-1 border-gray-300 justify-content-end">
+    <div class="flex p-3 shadow-3 border-1 border-gray-300 justify-content-center">
       <div>
-        <Button label="Отправить" @click="createTask" class="p-button-sm p-button-text p-button-success"
+        <Button :badge="selectedImage.length.toString()" badgeClass="p-badge-danger" label="Отправить" @click="createTask" class="p-button-sm p-button-text p-button-success"
                 :disabled="sendingTask"/>
         <Button label="Удалить" @click="deleteImg" class="p-button-sm p-button-text p-button-danger"
                 :disabled="deletingImg"/>
@@ -11,7 +11,6 @@
       </div>
     </div>
   </div>
-
   <Dialog header="Редактирование" v-model:visible="editDialog">
     <EditDescription/>
   </Dialog>

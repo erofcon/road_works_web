@@ -2,8 +2,9 @@
   <div class="flex h-full flex-column">
     <div class="overflow-y-auto">
       <div class="h-4rem flex align-items-center ml-4 text-black-alpha-40">
-        <router-link to="/" class="cursor-pointer text-2xl text-gray-900">
-          <span>АСМДП</span>
+        <router-link to="/" class="cursor-pointer pt-3 mb-3 text-gray-900 flex">
+          <img src="src/assets/road.png" alt="#" width="35">
+          <span class="pt-2 pl-2">АСМДП</span>
         </router-link>
       </div>
       <Menu :model="items"/>

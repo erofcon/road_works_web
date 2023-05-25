@@ -19,15 +19,15 @@ export default {
     return {
       items: [
         {
-          label: 'Загрузка данных с мобильного приложения',
-          command: () => this.changeComponent('XmlDetectionUpload'),
-        },
-        {
           label: 'Загрузка данных с видеорегистратора',
           command: () => this.changeComponent('TrackerDetectionUpload')
         },
+        {
+          label: 'Загрузка данных с мобильного приложения',
+          command: () => this.changeComponent('XmlDetectionUpload'),
+        },
       ],
-      currentComponent: XmlDetectionUpload,
+      currentComponent: TrackerDetectionUpload,
     }
   },
   methods: {

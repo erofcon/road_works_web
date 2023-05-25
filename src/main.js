@@ -7,6 +7,7 @@ import PrimeVue from 'primevue/config';
 import ToastService from 'primevue/toastservice';
 import ConfirmationService from 'primevue/confirmationservice';
 import Ripple from 'primevue/ripple';
+import BadgeDirective from 'primevue/badgedirective';
 
 //css
 import 'primevue/resources/themes/bootstrap4-light-blue/theme.css';
@@ -45,6 +46,8 @@ import Chip from "primevue/chip";
 import Galleria from "primevue/galleria";
 import ConfirmDialog from 'primevue/confirmdialog';
 import ScrollPanel from "primevue/scrollpanel";
+import Badge from 'primevue/badge';
+
 //
 
 // Leaflet components
@@ -99,7 +102,9 @@ app.component('Chip', Chip);
 app.component('Galleria', Galleria);
 app.component('ConfirmDialog', ConfirmDialog);
 app.component('ScrollPanel', ScrollPanel);
+app.component('Badge', Badge);
 
 app.directive('ripple', Ripple);
+app.directive('badge', BadgeDirective);
 
 app.mount('#app');
