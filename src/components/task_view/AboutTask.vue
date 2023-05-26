@@ -1,7 +1,11 @@
 <template>
   <ConfirmDialog></ConfirmDialog>
   <div>
-    <div class="flex align-items-center text-lg font-medium text-800 mb-1">Описание задачи</div>
+    <div class="flex align-items-center text-lg font-medium text-800 mb-1">
+      <span>Описание задачи</span>
+      <Button icon="pi pi-print" class="ml-2"
+              severity="secondary" text rounded/>
+    </div>
 
     <div class="flex align-items-center pt-3 pb-2 flex-wrap">
       <div class="text-500 w-full md:w-3 font-medium">дата создания</div>

@@ -20,7 +20,7 @@
     </div>
     <div class="flex align-items-center justify-content-between md:justify-content-end mt-3 md:mt-0">
       <div class="text-right ml-3">
-        <span class="text-yellow-700 font-bold">изображении: 120</span>
+        <span class="text-yellow-700 font-bold">изображении: {{data.detection_image_count}}</span>
       </div>
     </div>
   </div>

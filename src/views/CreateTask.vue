@@ -86,10 +86,10 @@ export default {
       }
     },
   },
+
   mounted() {
     if (!this.currentUser.user.is_creator) {
-      console.log("noo men")
-      // this.$router.push({name: 'pageNotFound'});
+      this.$router.push({name: 'pageNotFound'});
     } else {
       this.loadingPage();
     }

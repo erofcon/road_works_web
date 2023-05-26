@@ -9,6 +9,7 @@ import ConfirmationService from 'primevue/confirmationservice';
 import Ripple from 'primevue/ripple';
 import BadgeDirective from 'primevue/badgedirective';
 
+
 //css
 import 'primevue/resources/themes/bootstrap4-light-blue/theme.css';
 
@@ -47,6 +48,8 @@ import Galleria from "primevue/galleria";
 import ConfirmDialog from 'primevue/confirmdialog';
 import ScrollPanel from "primevue/scrollpanel";
 import Badge from 'primevue/badge';
+import OverlayPanel from "primevue/overlaypanel";
+import Avatar from "primevue/avatar";
 
 //
 
@@ -103,6 +106,9 @@ app.component('Galleria', Galleria);
 app.component('ConfirmDialog', ConfirmDialog);
 app.component('ScrollPanel', ScrollPanel);
 app.component('Badge', Badge);
+app.component('OverlayPanel', OverlayPanel);
+app.component('Avatar', Avatar);
+
 
 app.directive('ripple', Ripple);
 app.directive('badge', BadgeDirective);

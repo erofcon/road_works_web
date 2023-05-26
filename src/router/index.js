@@ -9,6 +9,7 @@ import DetectionResultGrid from "@/views/DetectionResultGrid.vue";
 import TaskList from "@/views/TaskList.vue";
 import MapView from "@/views/MapView.vue";
 import TaskView from "@/views/TaskView.vue";
+import PageNotFound from "@/views/PageNotFound.vue";
 
 
 const authGuard = function (to, from, next) {
@@ -71,11 +72,15 @@ const routes = [
         name: 'login',
         component: Login,
     },
-    // {
-    //     path: '/pagenotfound',
-    //     name: 'pageNotFound',
-    //     component: PageNotFound,
-    // },
+    {
+        path: '/pagenotfound',
+        name: 'pageNotFound',
+        component: PageNotFound,
+    },
+    {
+        path: '/:pathMatch(.*)*',
+        component: PageNotFound
+    }
     // {
     //     path: '/settings',
     //     name: 'settings',

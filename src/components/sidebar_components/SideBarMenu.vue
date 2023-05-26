@@ -13,6 +13,8 @@
 </template>
 
 <script>
+import {mapState} from "vuex";
+
 export default {
   name: "SideBarMenu",
   data() {
@@ -20,6 +22,7 @@ export default {
       items: [
         {
           label: 'Создать',
+          visible: false,
           items: [
             {
               label: 'Создать задачу',
@@ -38,6 +41,7 @@ export default {
         },
         {
           label: 'Результат детектирования',
+          visible: false,
           icon: 'pi pi-truck',
           to: '/detection_result',
         },
@@ -57,11 +61,28 @@ export default {
         },
       ],
     }
-  }
+  },
+  methods: {
+    userRouts() {
+      if (this.currentUser != null) {
+        if (this.currentUser.user.is_creator) this.items[0].visible = true;
+        if (this.currentUser.user.is_creator) this.items[2].visible = true;
+      }
+    },
+  },
+  mounted() {
+    this.userRouts();
+  },
+  computed: {
+    ...mapState({
+      currentUser: state => state.authenticate.currentUser,
+    }),
+  },
 }
 </script>
 
 <style scoped>
+
 :deep(.p-menu) {
   margin: 0 15px 0 10px;
   width: auto;
@@ -92,13 +113,4 @@ export default {
   text-transform: uppercase;
 }
 
-/*.p-menu .p-submenu-header {*/
-/*  margin: 0;*/
-/*  padding: 0.75rem 1rem;*/
-/*  color: #212529;*/
-/*  background: #ffffff;*/
-/*  font-weight: 600;*/
-/*  border-top-right-radius: 0;*/
-/*  border-top-left-radius: 0;*/
-/*}*/
 </style>

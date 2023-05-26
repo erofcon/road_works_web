@@ -40,6 +40,7 @@ export default {
       themeName: currentTheme ?? 'bootstrap4-light-blue',
     }
   },
+
   computed: {
     ...mapState(
         {
@@ -57,6 +58,14 @@ export default {
 .body {
   max-height: 90vh;
   overflow-y: scroll;
+}
+
+:deep(.p-overlaypanel){
+  padding: 0 !important;
+}
+
+:deep(.p-overlaypanel-content){
+  padding: 0!important;
 }
 
 </style>

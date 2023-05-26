@@ -45,7 +45,7 @@ export default {
   },
   mounted() {
     if (!this.currentUser.user.is_creator) {
-      // this.$router.push({name: 'pageNotFound'});
+      this.$router.push({name: 'pageNotFound'});
     } else {
       this.loadingPage();
     }
