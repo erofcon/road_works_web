@@ -1,5 +1,6 @@
 <template>
   <div class="col">
+    <ScrollPanel style="width: 100%; height: 80vh" class="custombar1">
     <div class="grid flex justify-content-center">
       <div v-for="img in images" :key="img.id" class="col-6">
         <Card :class="{card_checked:selectImg.some(data=>data.id===img.id)}"
@@ -15,7 +16,9 @@
           </template>
         </Card>
       </div>
+
     </div>
+    </ScrollPanel>
   </div>
 </template>
 

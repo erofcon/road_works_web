@@ -1,6 +1,6 @@
 <template>
   <div v-if="oneSelectImage!=null" class="col">
-    <Card class="shadow-2 border-noround sticky">
+    <Card class="shadow-2 border-noround">
       <template #content>
         <Image :src="baseUrl+'/'+oneSelectImage.url" alt="Image"
                imageStyle="width: 100%; height: auto; image-rendering: -webkit-optimize-contrast;" preview/>

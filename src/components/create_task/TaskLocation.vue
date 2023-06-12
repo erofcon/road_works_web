@@ -37,5 +37,8 @@ export default {
 </script>
 
 <style scoped>
+:deep(.leaflet-bottom){
+  display: none!important;
+}
 
 </style>
