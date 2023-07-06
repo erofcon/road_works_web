@@ -17,6 +17,7 @@
     "primeicons": "^6.0.1",
     "primevue": "^3.26.1",
     "vue": "^3.2.47",
+    "vue-photo-zoom-pro": "^3.0.1",
     "vue-router": "^4.1.6",
     "vuex": "^4.0.2"
   },

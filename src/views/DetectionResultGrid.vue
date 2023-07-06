@@ -65,6 +65,10 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
+.p-link {
+  z-index: 999 !important;
+}
+
 
 </style>

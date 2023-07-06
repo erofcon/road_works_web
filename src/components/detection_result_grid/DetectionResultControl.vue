@@ -1,6 +1,6 @@
 <template>
   <Toast/>
-  <div class="fixed bottom-0 min-w-full surface-0 z-5">
+  <div class="fixed bottom-0 min-w-full surface-0" style="z-index: 9999">
     <div class="flex p-3 border-gray-300 justify-content-center">
       <div>
         <Button :badge="selectedImage.length.toString()" badgeClass="p-badge-danger" label="Отправить" @click="createTask" class="p-button-sm p-button-text p-button-success"

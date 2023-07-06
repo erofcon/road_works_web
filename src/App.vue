@@ -68,4 +68,13 @@ export default {
   padding: 0!important;
 }
 
+
+:deep(.p-galleria .p-galleria-close) {
+  z-index: 9999 !important;
+}
+
+:deep(.p-galleria-close) {
+  z-index: 9999 !important;
+}
+
 </style>

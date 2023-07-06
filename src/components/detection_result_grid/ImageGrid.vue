@@ -1,23 +1,23 @@
 <template>
   <div class="col">
     <ScrollPanel style="width: 100%; height: 80vh" class="custombar1">
-    <div class="grid flex justify-content-center">
-      <div v-for="img in images" :key="img.id" class="col-6">
-        <Card :class="{card_checked:selectImg.some(data=>data.id===img.id)}"
-              class="shadow-2 border-noround">
-          <template #header>
-            <div class="flex justify-content-end col">
-              <input type="checkbox" class="cursor-pointer" v-bind:value="img" v-model="selectImg">
-            </div>
-          </template>
-          <template #content>
-            <img @click=selectOneImg(img)
-                 :src="baseUrl+'/'+img.url" class="cursor-pointer p-1" alt="img">
-          </template>
-        </Card>
-      </div>
+      <div class="grid flex justify-content-center">
+        <div v-for="(img, index) in images" :key="img.id" class="col-6">
+          <Card :class="{card_checked:selectImg.some(data=>data.id===img.id)}"
+                class="shadow-2 border-noround">
+            <template #header>
+              <div class="flex justify-content-end col">
+                <input type="checkbox" class="cursor-pointer" v-bind:value="img" v-model="selectImg">
+              </div>
+            </template>
+            <template #content>
+              <img @click="selectOneImg(img, index)"
+                   :src="baseUrl+'/'+img.url" class="cursor-pointer p-1" alt="img">
+            </template>
+          </Card>
+        </div>
 
-    </div>
+      </div>
     </ScrollPanel>
   </div>
 </template>
@@ -39,7 +39,9 @@ export default {
     }
   },
   methods: {
-    selectOneImg(img) {
+    selectOneImg(img, index) {
+      img = {...img, index:index}
+      console.log(img)
       this.selectImg = [];
       this.selectImg.push(img);
       this.$store.commit('detectionResultGrid/setSelectOneSelectImage', img);
@@ -72,11 +74,11 @@ img {
 }
 
 :deep(.p-card-body) {
-  padding: 0!important;
+  padding: 0 !important;
 }
 
 :deep(.p-card-content) {
-  padding: 0!important;
+  padding: 0 !important;
 }
 
 /*::v-deep(.p-card) {*/
