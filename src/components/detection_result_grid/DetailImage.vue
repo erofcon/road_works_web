@@ -1,11 +1,19 @@
 <template>
+
   <div v-if="oneSelectImage!=null" class="col">
+
     <Card class="shadow-2 border-noround">
       <template #content>
-        <Galleria v-model:activeIndex="oneSelectImage.index" v-model:visible="displayCustom" :value="detectionImages"
+
+        <Galleria v-model:visible="displayCustom"
+                  v-model:activeIndex="oneSelectImage.index"
+                  :value="detectionImages"
+                  :base-z-index="9999"
                   :responsiveOptions="responsiveOptions" :numVisible="7"
                   containerStyle="max-width: 850px" :circular="true" :fullScreen="true" :showItemNavigators="true"
-                  :showThumbnails="false">
+                  :showThumbnails="false"
+                  @update:activeIndex="upd"
+        >
           <template #header>
 
             <button @click="imageZoomIn" type="button" class="p-galleria-zoomin">
@@ -16,9 +24,25 @@
               <i class="pi pi-minus p-galleria-close-zoomout-icon"></i>
             </button>
 
+            <button @click="deleteImage" type="button" class="p-galleria-zoomout">
+              <i class="pi pi-delete-left p-galleria-close-zoomout-icon"></i>
+            </button>
+
           </template>
           <template #item="slotProps">
-            <img :src="baseUrl+'/'+slotProps.item.url" alt="slotProps.item.alt" :style="{width: imageZoomSize+'vw'}"/>
+
+            <div class="container">
+              <img :src="baseUrl+'/'+slotProps.item.url" alt="slotProps.item.alt" :style="{width: imageZoomSize+'vw'}"/>
+              <div class="hidden" :class="{delete_checking:deleteImages.some(data=>data.id===slotProps.item.id)}">
+                 <span
+                     class="fas fa-download w-screen h-screen bg-black-alpha-40 align-items-center justify-content-center flex">
+                <i class="text-6xl text-white  pi pi-times"></i>
+              </span>
+              </div>
+
+            </div>
+            <div>
+            </div>
           </template>
         </Galleria>
 
@@ -26,14 +50,15 @@
                imageStyle="width: 100%; height: auto; image-rendering: -webkit-optimize-contrast;"
                @click="imageClick()"
         />
+
       </template>
       <template #footer>
-        <span>
-          {{ oneSelectImage.latitude }}
-        </span>
+          <span>
+            {{ oneSelectImage.latitude }}
+          </span>
         <span class="ml-5">
-           {{ oneSelectImage.longitude }}
-        </span>
+             {{ oneSelectImage.longitude }}
+          </span>
       </template>
     </Card>
   </div>
@@ -41,18 +66,19 @@
 
 
 <script>
+
 import {mapState} from "vuex";
-import vuePhotoZoomPro from 'vue-photo-zoom-pro'
-import 'vue-photo-zoom-pro/dist/style/vue-photo-zoom-pro.css'
+import {LightGallery} from 'vue-light-gallery';
 
 export default {
   name: "DetailImage",
   components: {
-    vuePhotoZoomPro,
+    LightGallery,
   },
   data() {
     return {
-      images: null,
+      deleteImages: [],
+      index: null,
       activeIndex: 0,
       imageZoomSize: 80,
       responsiveOptions: [
@@ -94,8 +120,15 @@ export default {
     clamp(num, min, max) {
       return num <= min
           ? min : num >= max ? max : num
-    }
+    },
 
+    deleteImage(image) {
+      console.log(image)
+      // this.deleteImages.push(image)
+    },
+    upd(e) {
+      console.log(e)
+    }
   },
   computed: {
     ...mapState({
@@ -107,6 +140,10 @@ export default {
 </script>
 
 <style scoped>
+
+.delete_checking {
+  display: block !important;
+}
 
 .p-galleria-zoomin {
   position: absolute;
@@ -160,5 +197,24 @@ export default {
 
 .p-galleria-close-zoomout-icon {
   font-size: 2rem;
+}
+
+
+.container {
+  position: relative;
+}
+
+.container img {
+  display: block;
+}
+
+.container .fa-download {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  /*width: 300px;*/
+  /*bottom:;*/
+  /*left:0; */
 }
 </style>

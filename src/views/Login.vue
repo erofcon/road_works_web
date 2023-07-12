@@ -4,7 +4,7 @@
       <Card class="p-0 m-0">
         <template #title>
           <div class="flex justify-content-center mb-3 ">
-            <img src="src/assets/road.png" alt="#" width="45">
+            <img src="/src/assets/road.png" alt="#" width="45">
           </div>
           <span>Дорожные работы</span>
           <h4 class="mt-4 text-base">Добро пожаловать! 👋</h4>
