@@ -9,9 +9,9 @@
       <DetailImage :base-url="baseUrl"/>
     </div>
   </div>
-  <DetectionResultControl :base-url="baseUrl"/>
 
 </template>
+
 
 <script>
 import {defaultApiInstance} from "@/api";

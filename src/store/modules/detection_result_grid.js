@@ -29,9 +29,9 @@ export const detectionResultGrid = {
                 commit('setDetectionImages', value.data);
             });
         }, async deleteImages({commit, state}) {
-            for (let i in state.selectedImage) {
-                await DetectionResultGridApi.deleteDetectionImage(state.selectedImage[i].id);
-            }
+            // for (let i in state.selectedImage) {
+            //     await DetectionResultGridApi.deleteDetectionImage(state.selectedImage[i].id);
+            // }
             commit('deleteImages');
         }
     }

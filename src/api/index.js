@@ -10,6 +10,7 @@ const defaultHeaders = {
 
 const defaultUrl = 'http://192.168.1.253:8000';
 // const defaultUrl = 'http://127.0.0.1:8000';
+// const defaultUrl = 'http://0.0.0.0:8000'
 
 export const defaultApiInstance = axios.create({
     baseURL: defaultUrl,

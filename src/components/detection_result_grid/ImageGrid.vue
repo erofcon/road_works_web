@@ -16,17 +16,22 @@
             </template>
           </Card>
         </div>
-
       </div>
     </ScrollPanel>
   </div>
+  <DetectionResultControl @deleteImg="deleting" :base-url="baseUrl"/>
 </template>
 
 <script>
 import {mapState} from "vuex";
+import DetectionResultControl from "@/components/detection_result_grid/DetectionResultControl.vue";
+
 
 export default {
   name: "ImageGrid",
+  components: {
+    DetectionResultControl,
+  },
   props: {
     baseUrl: {
       type: String,
@@ -39,13 +44,18 @@ export default {
     }
   },
   methods: {
+    deleting() {
+      console.log("yess")
+      this.selectImg = []
+    },
     selectOneImg(img, index) {
-      img = {...img, index:index}
-      console.log(img)
+      img = {...img, index: index}
       this.selectImg = [];
       this.selectImg.push(img);
       this.$store.commit('detectionResultGrid/setSelectOneSelectImage', img);
-    }
+    },
+
+
   },
   computed: {
     ...mapState({
@@ -80,16 +90,4 @@ img {
 :deep(.p-card-content) {
   padding: 0 !important;
 }
-
-/*::v-deep(.p-card) {*/
-/*  .p-card-body {*/
-/*    padding: 0;*/
-/*  }*/
-
-/*  .p-card-content {*/
-/*    padding: 0;*/
-/*  }*/
-/*}*/
-
-
 </style>

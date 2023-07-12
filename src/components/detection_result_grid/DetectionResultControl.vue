@@ -1,9 +1,10 @@
 <template>
   <Toast/>
-  <div class="fixed bottom-0 min-w-full surface-0" style="z-index: 9999">
-    <div class="flex p-3 border-gray-300 justify-content-center">
+  <div class="fixed bottom-0 min-w-full bg-transparent" style="z-index: 9999">
+    <div class="flex p-3 border-gray-300 align-items-center justify-content-center">
       <div>
-        <Button :badge="selectedImage.length.toString()" badgeClass="p-badge-danger" label="Отправить" @click="createTask" class="p-button-sm p-button-text p-button-success"
+        <Button :badge="selectedImage.length.toString()" badgeClass="p-badge-danger" label="Отправить"
+                @click="createTask" class="p-button-sm p-button-text p-button-success"
                 :disabled="sendingTask"/>
         <Button label="Удалить" @click="deleteImg" class="p-button-sm p-button-text p-button-danger"
                 :disabled="deletingImg"/>
@@ -85,25 +86,25 @@ export default {
         this.deletingImg = true;
         this.$store.dispatch('detectionResultGrid/deleteImages').then(
             value => {
-              this.$toast.add({
-                severity: 'success',
-                summary: 'Успех',
-                detail: 'изображение успешно удалено',
-                life: 3000
-              });
+              // this.$toast.add({
+              //   severity: 'success',
+              //   summary: 'Успех',
+              //   detail: 'изображение успешно удалено',
+              //   life: 3000
+              // });
             },
             reason => {
-              this.$toast.add({
-                severity: 'error',
-                summary: 'Ошибка',
-                detail: 'Ошибка удаления изображения',
-                life: 3000
-              });
+              // this.$toast.add({
+              //   severity: 'error',
+              //   summary: 'Ошибка',
+              //   detail: 'Ошибка удаления изображения',
+              //   life: 3000
+              // });
             }
         );
+        this.$emit('deleteImg');
         this.deletingImg = false;
       }
-
     },
   },
   computed: {
