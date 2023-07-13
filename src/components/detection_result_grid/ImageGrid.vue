@@ -26,7 +26,6 @@
 import {mapState} from "vuex";
 import DetectionResultControl from "@/components/detection_result_grid/DetectionResultControl.vue";
 
-
 export default {
   name: "ImageGrid",
   components: {
@@ -45,7 +44,6 @@ export default {
   },
   methods: {
     deleting() {
-      console.log("yess")
       this.selectImg = []
     },
     selectOneImg(img, index) {
@@ -54,8 +52,6 @@ export default {
       this.selectImg.push(img);
       this.$store.commit('detectionResultGrid/setSelectOneSelectImage', img);
     },
-
-
   },
   computed: {
     ...mapState({

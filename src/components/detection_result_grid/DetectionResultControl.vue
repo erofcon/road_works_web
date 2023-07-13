@@ -102,7 +102,7 @@ export default {
               // });
             }
         );
-        this.$emit('deleteImg');
+        // this.$emit('deleteImg');
         this.deletingImg = false;
       }
     },

@@ -1,5 +1,4 @@
 <template>
-
   <div v-if="oneSelectImage!=null" class="col">
 
     <Card class="shadow-2 border-noround">
@@ -8,11 +7,11 @@
         <Galleria v-model:visible="displayCustom"
                   v-model:activeIndex="oneSelectImage.index"
                   :value="detectionImages"
-                  :base-z-index="9999"
                   :responsiveOptions="responsiveOptions" :numVisible="7"
                   containerStyle="max-width: 850px" :circular="true" :fullScreen="true" :showItemNavigators="true"
                   :showThumbnails="false"
                   @update:activeIndex="upd"
+                  @update:visible="updateVisible"
         >
           <template #header>
 
@@ -24,8 +23,8 @@
               <i class="pi pi-minus p-galleria-close-zoomout-icon"></i>
             </button>
 
-            <button @click="deleteImage" type="button" class="p-galleria-zoomout">
-              <i class="pi pi-delete-left p-galleria-close-zoomout-icon"></i>
+            <button @click="deleteImage" type="button" class="p-galleria-delete">
+              <i class="pi pi-trash p-galleria-delete-icon"></i>
             </button>
 
           </template>
@@ -79,7 +78,7 @@ export default {
     return {
       deleteImages: [],
       index: null,
-      activeIndex: 0,
+      activeIndex: null,
       imageZoomSize: 80,
       responsiveOptions: [
         {
@@ -122,12 +121,37 @@ export default {
           ? min : num >= max ? max : num
     },
 
-    deleteImage(image) {
-      console.log(image)
-      // this.deleteImages.push(image)
+    deleteImage() {
+      this.deleteImages.push(this.detectionImages[this.activeIndex])
     },
     upd(e) {
-      console.log(e)
+      this.activeIndex = e
+    },
+    updateVisible() {
+      this.$emit("deleteImages", this.deleteImages)
+      // this.$emit("deleteImages", this.deleteImages)
+      // this.$emit("deleteImages", this.deleteImages)
+      // this.$store.commit("detectionResultGrid/setSelectedImages", this.deleteImages)
+      // this.$store.dispatch("detectionResultGrid/deleteImages")
+
+      // let selectImage = []
+      // selectImage.push(this.oneSelectImage)
+      // this.deleteImages = []
+      // this.$store.commit("detectionResultGrid/setSelectedImages", selectImage)
+    },
+  },
+
+  watch: {
+    displayCustom() {
+      if (this.displayCustom === true) {
+        this.activeIndex = this.oneSelectImage.index
+        this.$store.commit("detectionResultGrid/setSelectedImages", [])
+
+      } else {
+        // console.log("noo")
+        // this.activeIndex = null
+
+      }
     }
   },
   computed: {
@@ -199,6 +223,33 @@ export default {
   font-size: 2rem;
 }
 
+
+.p-galleria-delete {
+  position: absolute;
+  top: 0;
+  right: 240px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  user-select: none;
+
+  margin: 0.5rem;
+  background: transparent;
+  color: #f8f9fa;
+  width: 4rem;
+  height: 4rem;
+  transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+  border-radius: 50%;
+  z-index: 9999;
+}
+
+.p-galleria-delete-icon {
+  font-size: 2rem;
+}
 
 .container {
   position: relative;
