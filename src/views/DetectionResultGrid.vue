@@ -6,7 +6,7 @@
   <div v-else class="col">
     <div class="grid">
       <ImageGrid :base-url="baseUrl"/>
-      <DetailImage :base-url="baseUrl"/>
+      <DetailImage @deleteImages="deleteImages" :base-url="baseUrl"/>
     </div>
   </div>
 
@@ -31,9 +31,19 @@ export default {
     return {
       baseUrl: defaultApiInstance.defaults.baseURL,
       loading: true,
+      close: true,
     }
   },
   methods: {
+    deleteImages(e) {
+      setTimeout(() => {
+        if (e.length > 0) {
+          this.$store.commit("detectionResultGrid/setSelectedImages", e);
+          this.$store.dispatch("detectionResultGrid/deleteImages");
+          this.$store.commit("detectionResultGrid/setSelectOneSelectImage", null);
+        }
+      }, 100)
+    },
     loadingPage() {
       this.$store.dispatch('detectionResultGrid/getDetectionImages', {id: this.$route.params.id});
       this.$store.dispatch('createTask/getRelatedGroups');
@@ -58,6 +68,7 @@ export default {
   computed: {
     ...mapState({
       selectedImage: state => state.detectionResultGrid.selectedImage,
+      oneSelectImage: state => state.detectionResultGrid.oneSelectImage,
       selectedGroupId: state => state.createTask.selectedGroupId,
       currentUser: state => state.authenticate.currentUser,
     }),

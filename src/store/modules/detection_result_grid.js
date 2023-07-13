@@ -15,7 +15,6 @@ export const detectionResultGrid = {
                 state.detectionImages = state.detectionImages.filter(value => value.id !== state.selectedImage[i].id)
             }
             state.selectedImage = [];
-            state.oneSelectImage = null;
         }, deleteSelectOneSelectImage(state) {
             state.oneSelectImage = null;
         }, resetStore(state) {
@@ -29,9 +28,9 @@ export const detectionResultGrid = {
                 commit('setDetectionImages', value.data);
             });
         }, async deleteImages({commit, state}) {
-            // for (let i in state.selectedImage) {
-            //     await DetectionResultGridApi.deleteDetectionImage(state.selectedImage[i].id);
-            // }
+            for (let i in state.selectedImage) {
+                await DetectionResultGridApi.deleteDetectionImage(state.selectedImage[i].id);
+            }
             commit('deleteImages');
         }
     }
