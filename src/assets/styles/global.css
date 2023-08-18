@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 1566px;
+}
+
+.styled-box-green {
+    background: #caf1d8!important;
+}
+
+.styled-box-red {
+    background: #ffd0ce !important;
+}
+
+.styled-box-purple {
+    background: #ead6fd !important;
+}
+
+.styled-box-cyan {
+    background: #c3edf5 !important;
+}
+
+
