@@ -18,11 +18,12 @@ export const RunDetectionAPI = {
         })
     },
 
-    runDetectionWithTracker(description, video, startDatetime) {
+    runDetectionWithTracker(description, video, startDatetime, carId) {
         const form = new FormData();
         form.append('description', description);
         form.append('video_file', video);
         form.append('video_start_datetime', startDatetime.toISOString().slice(0, -5));
+        form.append('car_id', carId);
 
         return defaultApiInstance.post('/run_detection_with_tracker', form, {
             onUploadProgress: function (progressEvent) {
@@ -30,4 +31,11 @@ export const RunDetectionAPI = {
             }, headers: {'Content-Type': 'multipart/form-data'}
         })
     },
+
+    getAllCars() {
+        const url = '/get_all_cars';
+
+        return defaultApiInstance(url)
+    }
+
 }

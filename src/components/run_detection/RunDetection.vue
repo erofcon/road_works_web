@@ -1,4 +1,5 @@
 <template>
+
   <div class="card">
     <TabMenu :model="items"/>
     <component v-bind:is="{...currentComponent}"/>
@@ -9,6 +10,7 @@
 import TrackerDetectionUpload from "@/components/run_detection/TrackerDetectionUpload.vue";
 import XmlDetectionUpload from "@/components/run_detection/XmlDetectionUpload.vue";
 import {mapState} from "vuex";
+
 
 export default {
   name: "RunDetection",
@@ -35,7 +37,7 @@ export default {
       } else if (value === 'TrackerDetectionUpload' && this.currentComponent.name !== 'TrackerDetectionUpload') {
         this.currentComponent = TrackerDetectionUpload
       }
-    }
+    },
   },
   mounted() {
     if (!this.currentUser.user.is_creator) {
